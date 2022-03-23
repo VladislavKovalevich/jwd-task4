@@ -1,0 +1,3 @@
+ship1,2,0,LOAD
+ship2,2,0,LOAD
+ship3,2,0,LOAD
