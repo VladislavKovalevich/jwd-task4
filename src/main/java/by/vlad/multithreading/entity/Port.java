@@ -42,7 +42,7 @@ public class Port {
                 berthPool.add(new Berth());
             }
         } catch (CustomException e) {
-            e.printStackTrace();
+            logger.error("data read error ", e);
         }
     }
 
@@ -72,9 +72,9 @@ public class Port {
             }
 
             berth = berthPool.removeFirst();
-            logger.info("Причал id=" + berth.getId() + " был выделен для корабля " + Thread.currentThread().getName());
+            logger.info("Berth id=" + berth.getId() + " was allocated for the ship " + Thread.currentThread().getName());
         } catch (InterruptedException e) {
-            logger.error("Cannot getting berth this ship", e);
+            logger.error("Cannot getting berth for this ship", e);
             Thread.currentThread().interrupt();
         } finally {
             lock.unlock();
@@ -87,8 +87,7 @@ public class Port {
         lock.lock();
         try {
             berthPool.push(berth);
-
-            logger.info("Причал id=" + berth.getId() + " был освобожден после разгрузки/загрузки корабля " + Thread.currentThread().getName());
+            logger.info("Berth id=" + berth.getId() + " was released after loading/uploading the ship " + Thread.currentThread().getName());
 
             Condition condition = waitingQueue.pollFirst();
 
@@ -117,15 +116,12 @@ public class Port {
     }
 
     public void refreshPortStorage(){
-        logger.info("перерасчет контейнеров");
+        logger.info("changing the number of containers ");
         int current = containerNumber.get();
 
         if (current <= 0.3 * maxContainersNumber || current >= 0.8 * maxContainersNumber){
             containerNumber.set(maxContainersNumber / 2);
-            logger.info("PORT ----- изменение колличества контейнеров, текущее колличество контейнеров:" + containerNumber);
-        }else{
-            logger.info("склад не нуждается в перерасчете");
+            logger.info("The current number of containers has changed: " + containerNumber);
         }
-        //изменение колличество контейнеров
     }
 }

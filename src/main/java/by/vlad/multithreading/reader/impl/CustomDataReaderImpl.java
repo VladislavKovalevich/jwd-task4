@@ -2,6 +2,8 @@ package by.vlad.multithreading.reader.impl;
 
 import by.vlad.multithreading.exception.CustomException;
 import by.vlad.multithreading.reader.CustomDataReader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CustomDataReaderImpl implements CustomDataReader {
+    private static final Logger logger = LogManager.getLogger();
     private static CustomDataReaderImpl instance;
 
     private CustomDataReaderImpl(){
@@ -35,7 +38,7 @@ public class CustomDataReaderImpl implements CustomDataReader {
             lines = bf.lines()
             .collect(Collectors.toList());
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("error while working with file ", e);
         }
 
         return lines;
