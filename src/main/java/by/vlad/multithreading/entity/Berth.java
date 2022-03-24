@@ -32,7 +32,7 @@ public class Berth {
             try {
                 TimeUnit.MILLISECONDS.sleep(new Random().nextInt(MAX_OPERATION_TIME));
             } catch (InterruptedException e) {
-                logger.error("Ошибка при загрузке корабля", e);
+                logger.error(Thread.currentThread().getName() + " was interrupted.", e);
                 Thread.currentThread().interrupt();
             }
         }
@@ -55,7 +55,7 @@ public class Berth {
             try {
                 TimeUnit.MILLISECONDS.sleep(new Random().nextInt(MAX_OPERATION_TIME));
             } catch (InterruptedException e) {
-                logger.error("Ошибка при разгрузке корабля", e);
+                logger.error(Thread.currentThread().getName() + " was interrupted.", e);
                 Thread.currentThread().interrupt();
             }
         }

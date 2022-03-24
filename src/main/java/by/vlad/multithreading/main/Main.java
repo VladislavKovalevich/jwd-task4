@@ -4,8 +4,8 @@ import by.vlad.multithreading.entity.Berth;
 import by.vlad.multithreading.entity.PortTimerTask;
 import by.vlad.multithreading.entity.Ship;
 import by.vlad.multithreading.exception.CustomException;
-import by.vlad.multithreading.parser.impl.ApplicationDataParserImpl;
-import by.vlad.multithreading.reader.impl.CustomDataReaderImpl;
+import by.vlad.multithreading.parser.impl.DataParserImpl;
+import by.vlad.multithreading.reader.impl.DataReaderImpl;
 
 import java.util.List;
 import java.util.Timer;
@@ -18,8 +18,8 @@ public class Main {
         Timer timer = new Timer();
         timer.schedule(new PortTimerTask(), Berth.MAX_OPERATION_TIME, Berth.MAX_OPERATION_TIME * 2);
 
-        CustomDataReaderImpl reader = CustomDataReaderImpl.getInstance();
-        ApplicationDataParserImpl parser = ApplicationDataParserImpl.getInstance();
+        DataReaderImpl reader = DataReaderImpl.getInstance();
+        DataParserImpl parser = DataParserImpl.getInstance();
 
         List<String> lines;
         List<Ship> ships;

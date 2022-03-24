@@ -1,7 +1,7 @@
 package by.vlad.multithreading.reader.impl;
 
 import by.vlad.multithreading.exception.CustomException;
-import by.vlad.multithreading.reader.CustomDataReader;
+import by.vlad.multithreading.reader.DataReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CustomDataReaderImpl implements CustomDataReader {
+public class DataReaderImpl implements DataReader {
     private static final Logger logger = LogManager.getLogger();
-    private static CustomDataReaderImpl instance;
+    private static DataReaderImpl instance;
 
-    private CustomDataReaderImpl(){
+    private DataReaderImpl(){
     }
 
-    public static CustomDataReaderImpl getInstance() {
+    public static DataReaderImpl getInstance() {
         if (instance == null){
-            instance = new CustomDataReaderImpl();
+            instance = new DataReaderImpl();
         }
         return instance;
     }

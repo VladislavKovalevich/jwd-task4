@@ -2,7 +2,7 @@ package by.vlad.multithreading.parser.impl;
 
 import by.vlad.multithreading.entity.Ship;
 import by.vlad.multithreading.entity.ShipTypeEnum;
-import by.vlad.multithreading.parser.ApplicationDataParser;
+import by.vlad.multithreading.parser.DataParser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,17 +11,17 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ApplicationDataParserImpl implements ApplicationDataParser {
+public class DataParserImpl implements DataParser {
     private static final String SHIP_DATA_DELIMITER = ",";
     private static final String PORT_DATA_DELIMITER = "=";
-    private static ApplicationDataParserImpl instance;
+    private static DataParserImpl instance;
 
-    private ApplicationDataParserImpl(){
+    private DataParserImpl(){
     }
 
-    public static ApplicationDataParserImpl getInstance() {
+    public static DataParserImpl getInstance() {
         if (instance == null){
-            instance = new ApplicationDataParserImpl();
+            instance = new DataParserImpl();
         }
         return instance;
     }

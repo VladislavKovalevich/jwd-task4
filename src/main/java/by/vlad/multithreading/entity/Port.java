@@ -1,8 +1,8 @@
 package by.vlad.multithreading.entity;
 
 import by.vlad.multithreading.exception.CustomException;
-import by.vlad.multithreading.parser.impl.ApplicationDataParserImpl;
-import by.vlad.multithreading.reader.impl.CustomDataReaderImpl;
+import by.vlad.multithreading.parser.impl.DataParserImpl;
+import by.vlad.multithreading.reader.impl.DataReaderImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,8 +32,8 @@ public class Port {
     private Port(){
         List<String> lines;
         try {
-            lines = CustomDataReaderImpl.getInstance().loadDataFromFile("port.txt");
-            Map<String, Integer> map = ApplicationDataParserImpl.getInstance().parsePortParams(lines);
+            lines = DataReaderImpl.getInstance().loadDataFromFile("port.txt");
+            Map<String, Integer> map = DataParserImpl.getInstance().parsePortParams(lines);
 
             maxContainersNumber = map.get(MAX_CONTAINERS);
             containerNumber = new AtomicInteger(map.get(CONTAINERS));

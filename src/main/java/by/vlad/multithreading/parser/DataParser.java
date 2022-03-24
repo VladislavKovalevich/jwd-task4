@@ -5,7 +5,7 @@ import by.vlad.multithreading.entity.Ship;
 import java.util.List;
 import java.util.Map;
 
-public interface ApplicationDataParser {
+public interface DataParser {
     List<Ship> parseShipData(List<String> lines);
     Map<String, Integer> parsePortParams(List<String> lines);
 }
